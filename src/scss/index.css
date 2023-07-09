@@ -1,0 +1,263 @@
+html {
+  background-color: #2e3033;
+  padding: 0;
+  margin: 0;
+}
+
+.diagonal-background {
+  width: 100%;
+  height: 93%;
+  background: linear-gradient(to bottom right, #2e3033 0%, #2e3033 55%, #408c1b 55%, #408c1b 70%, #254f10 60%);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -1 !important;
+}
+
+.PokemonList {
+  margin: 10px;
+}
+
+.current {
+  color: red;
+}
+
+.none {
+  display: none;
+}
+
+.inactive {
+  color: red;
+}
+
+.pokedex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+.pokedex-item {
+  width: 220px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1c1a;
+  margin: 15px 0;
+  border: solid white 2px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.pokedex-item:hover.normal {
+  box-shadow: 10px 10px #A8A77A;
+}
+.pokedex-item:hover.fire {
+  box-shadow: 10px 10px #EE8130;
+}
+.pokedex-item:hover.water {
+  box-shadow: 10px 10px #6390F0;
+}
+.pokedex-item:hover.electric {
+  box-shadow: 10px 10px #F7D02C;
+}
+.pokedex-item:hover.grass {
+  box-shadow: 10px 10px #7AC74C;
+}
+.pokedex-item:hover.ice {
+  box-shadow: 10px 10px #96D9D6;
+}
+.pokedex-item:hover.fighting {
+  box-shadow: 10px 10px #C22E28;
+}
+.pokedex-item:hover.poison {
+  box-shadow: 10px 10px #A33EA1;
+}
+.pokedex-item:hover.ground {
+  box-shadow: 10px 10px #E2BF65;
+}
+.pokedex-item:hover.flying {
+  box-shadow: 10px 10px #A98FF3;
+}
+.pokedex-item:hover.psychic {
+  box-shadow: 10px 10px #F95587;
+}
+.pokedex-item:hover.bug {
+  box-shadow: 10px 10px #A6B91A;
+}
+.pokedex-item:hover.rock {
+  box-shadow: 10px 10px #B6A136;
+}
+.pokedex-item:hover.ghost {
+  box-shadow: 10px 10px #735797;
+}
+.pokedex-item:hover.dragon {
+  box-shadow: 10px 10px #6F35FC;
+}
+.pokedex-item:hover.dark {
+  box-shadow: 10px 10px #705746;
+}
+.pokedex-item:hover.steel {
+  box-shadow: 10px 10px #B7B7CE;
+}
+.pokedex-item:hover.fairy {
+  box-shadow: 10px 10px #D685AD;
+}
+.pokedex-item h3 {
+  background-color: #1a1c1a;
+  color: #f0f0f0;
+  font-size: 24px;
+}
+.pokedex-item img {
+  background-color: #1a1c1a;
+  width: 60%;
+}
+
+.type-container {
+  display: flex;
+  background-color: #1a1c1a;
+}
+
+.Pokemon {
+  z-index: 2;
+  background-color: red;
+}
+
+.type {
+  width: 60px;
+  height: 20px;
+  text-align: center;
+  padding: 1px;
+  border: #f0f0f0 solid 2px;
+  border-radius: 5px;
+  color: #f0f0f0;
+  margin: 0 5px 15px;
+  text-shadow: 1px 1px gray;
+}
+.type.normal {
+  background-color: #A8A77A;
+}
+.type.normal p {
+  background-color: #A8A77A;
+  margin: 0;
+}
+.type.fire {
+  background-color: #EE8130;
+}
+.type.fire p {
+  background-color: #EE8130;
+  margin: 0;
+}
+.type.water {
+  background-color: #6390F0;
+}
+.type.water p {
+  background-color: #6390F0;
+  margin: 0;
+}
+.type.electric {
+  background-color: #F7D02C;
+}
+.type.electric p {
+  background-color: #F7D02C;
+  margin: 0;
+}
+.type.grass {
+  background-color: #7AC74C;
+}
+.type.grass p {
+  background-color: #7AC74C;
+  margin: 0;
+}
+.type.ice {
+  background-color: #96D9D6;
+}
+.type.ice p {
+  background-color: #96D9D6;
+  margin: 0;
+}
+.type.fighting {
+  background-color: #C22E28;
+}
+.type.fighting p {
+  background-color: #C22E28;
+  margin: 0;
+}
+.type.poison {
+  background-color: #A33EA1;
+}
+.type.poison p {
+  background-color: #A33EA1;
+  margin: 0;
+}
+.type.ground {
+  background-color: #E2BF65;
+}
+.type.ground p {
+  background-color: #E2BF65;
+  margin: 0;
+}
+.type.flying {
+  background-color: #A98FF3;
+}
+.type.flying p {
+  background-color: #A98FF3;
+  margin: 0;
+}
+.type.psychic {
+  background-color: #F95587;
+}
+.type.psychic p {
+  background-color: #F95587;
+  margin: 0;
+}
+.type.bug {
+  background-color: #A6B91A;
+}
+.type.bug p {
+  background-color: #A6B91A;
+  margin: 0;
+}
+.type.rock {
+  background-color: #B6A136;
+}
+.type.rock p {
+  background-color: #B6A136;
+  margin: 0;
+}
+.type.ghost {
+  background-color: #735797;
+}
+.type.ghost p {
+  background-color: #735797;
+  margin: 0;
+}
+.type.dragon {
+  background-color: #6F35FC;
+}
+.type.dragon p {
+  background-color: #6F35FC;
+  margin: 0;
+}
+.type.dark {
+  background-color: #705746;
+}
+.type.dark p {
+  background-color: #705746;
+  margin: 0;
+}
+.type.steel {
+  background-color: #B7B7CE;
+}
+.type.steel p {
+  background-color: #B7B7CE;
+  margin: 0;
+}
+.type.fairy {
+  background-color: #D685AD;
+}
+.type.fairy p {
+  background-color: #D685AD;
+  margin: 0;
+}/*# sourceMappingURL=index.css.map */

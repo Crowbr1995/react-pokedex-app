@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 export const capitalizeLetter = (word) => {
   if (!word) return '';
 
@@ -8,6 +6,20 @@ export const capitalizeLetter = (word) => {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 };
+
+export const formatIdxNum = (idx) => {
+  const arr = [idx].toString().split('');
+
+  for (let i =0; i < 5; i++) {
+    if (arr.length > 4) {
+      break;
+    } else if (arr.length < 4) {
+      arr.unshift('0')
+    }
+  }
+
+  return arr
+}
 
 export const formatUnit = (unit) => {
   return (unit * 0.1).toFixed(1);

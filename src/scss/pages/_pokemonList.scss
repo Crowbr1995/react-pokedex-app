@@ -1,0 +1,57 @@
+.PokemonList {
+    margin: 10px;
+}
+
+.current {
+    color: red;
+}
+
+.none {
+    display: none;
+}
+
+.inactive {
+    color: red;
+}
+
+.pokedex {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    justify-items: center; 
+    align-items: center; 
+}
+
+.pokedex-item {
+    width: 220px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-color-secondary;
+    margin: 15px 0;
+    border: solid white 2px;
+    cursor: pointer;
+    border-radius: 15px;
+    
+    &:hover { @each $type, $color in $type-colors {
+        &.#{$type} {
+            box-shadow: 10px 10px $color;
+        }
+      }
+    }
+    h3 {
+        background-color: $background-color-secondary;
+        color: $text-color;
+        font-size: 24px;
+    }
+    img {
+        background-color: $background-color-secondary;
+        width: 60%;
+    }
+}
+
+.type-container {
+    display: flex;
+    background-color: $background-color-secondary;
+}

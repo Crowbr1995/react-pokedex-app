@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Pokedex from './components/PokemonListData/PokemonList';
-import Pokemon from './components/PokemonData/Pokemon';
-import './App.css';
+import PokemonList from './pages/PokemonListData/PokemonList';
+import PokemonData from './pages/PokemonData/Pokemon';
+import Search from './components/Search';
+import './scss/index.css';
 
 function App() {
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/')
+  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon');
+  const [newUrl, setNewUrl] = useState('')
   const [pokedex, setPokedex] = useState([]);
   const [pokemon, setPokemon] = useState(null);
-  const [species, setSpecies] = useState(null)
+  const [species, setSpecies] = useState(null);
+  const [page, setPage] = useState(0);
+  const [results, setResults] = useState(20)
   const [loading, setLoading] = useState(true);
-  const [next, setNext] = useState('')
-  const [prev, setPrev] = useState('')
+  const [next, setNext] = useState('');
+  const [prev, setPrev] = useState('');
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -25,18 +29,19 @@ function App() {
         const pokemonData = pokemonDataResponses.map((res) => res.data);
         setPokedex(pokemonData);
         setLoading(false);
+        setNewUrl(`https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`)
         setPrev(response.data.previous)
         setNext(response.data.next)
-        console.log(pokemonData);
+        console.log();
+        console.log();
       }
        catch (error) {
         console.log('Error:', error.message);
         setLoading(false);
       }
     };
-
     fetchPokemonData();
-  }, [url]);
+  }, [url, page]);
 
   const setPokemonData = async (pokemonName) => {
     try {
@@ -52,13 +57,12 @@ function App() {
   };
 
   useEffect(() => {
-    const fetchNewData = async (data) => {
+    const fetchNewData = async () => {
       try {
         if (pokemon && pokemon.species ) {
           const response = await axios.get(pokemon.species.url);
           const speciesData = response.data;
           setSpecies(speciesData);
-          console.log(speciesData);
         }
       } catch (error) {
         console.log('Error: ', error.message);
@@ -68,32 +72,43 @@ function App() {
     fetchNewData();
   }, [pokemon]);
   
+  const handleSearch = (name) => {
+    setPokemonData(name)
+  };
 
   const formatHome = () => {
     setPokemon(null);
   };
 
-  const goToPrev = () => {
-    setUrl(prev)
+  const handleNewPage = (pageNum) => {
+    setPage(pageNum);
+    setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${pageNum * results}&limit=${results}`);
   }
 
-  const goToNext = () => {
-      setUrl(next);
+  const handlePageResults= (result) => {
+    setResults(result);
+    setPage(0)
+    setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=${result}`);
   }
 
   return (
     <div className="App">
+      <div className='diagonal-background'></div>
       {loading ? (
         <div>Loading...</div>
       ) : (
         <>
+          <Search handleSearch={handleSearch} handlePageResults={handlePageResults} pokedex={pokedex} results={results} />
           {pokemon ? (
-            <Pokemon pokemon={pokemon} species={species} setPokemonData={setPokemonData} formatHome={formatHome} />
+            <PokemonData pokemon={pokemon} species={species} setPokemonData={setPokemonData} formatHome={formatHome} />
           ) : (
-            <Pokedex pokedex={pokedex} setPokemonData={setPokemonData} goToPrev={goToPrev} goToNext={goToNext} />
+            <div>
+              <PokemonList pokedex={pokedex} setPokemonData={setPokemonData} page={page} handleNewPage={handleNewPage} />
+            </div>
           )}
         </>
       )}
+      
     </div>
   );
 }
