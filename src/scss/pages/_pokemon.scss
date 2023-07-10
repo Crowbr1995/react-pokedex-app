@@ -1,4 +1,186 @@
 .Pokemon {
     z-index: 2;
-    background-color: red;
+    background: linear-gradient(rgb(26, 28, 26, 0) 0%, $background-color-secondary 1%, $background-color-secondary 98%, rgb(26, 28, 26, 0) 100%);
+    color: $text-color;
+    width: 70%;
+    margin: 30px auto;
+    padding: 150px 0 250px;
+    text-align: center;
+    border: 3px solid white;
+
+    @each $type, $color in $type-colors {
+        &.#{$type} {
+            border-image: linear-gradient(rgb(46, 48, 51, 0) 0%, $color 3%, $color 97%, rgb(46, 48, 51, 0) 100%);
+            border-image-slice: 1;
+            $color-2: $color;
+        }
+      }
+}
+
+.back-btn {
+	overflow: hidden;
+	position: relative;
+    bottom: 30px;
+    left: 35%;
+	border: none;
+	padding: 0;
+	width: 1.9em; height: 2em;
+	border-radius: 50%;
+	background: transparent;
+	color: $text-color;
+	font: inherit;
+	text-indent: 100%;
+	cursor: pointer;
+	
+	&:focus {
+		outline: solid 0 transparent;
+	}
+	
+	&:hover {
+		background: $background-color-primary;
+        color: $color-primary;
+	}
+	
+	&:before, &:after {
+		position: absolute;
+		top: 15%; left: calc(50% - .0625em);
+		width: .125em; height: 70%;
+		border-radius: .125em;
+		transform: rotate(45deg);
+		background: currentcolor;
+		content: ''
+	}
+	
+	&:after { transform: rotate(-45deg); }
+}
+
+.data-main {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.main-container {
+  position: absolute;
+  top: 25%;
+
+    h2 {
+        font-size: 45px;
+        font-weight: 550;
+        background: none;
+    }
+
+    p {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .main-img-container {
+        display: flex;
+        flex-direction: row;
+
+        .main-img {
+            width: 140px;
+        }
+    }
+    
+}
+
+.adjacent-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &.prev {
+        position: relative;
+        right: 30%;
+    }
+
+    &.next {
+        position: relative;
+        left: 30%;
+    }
+
+    .adjacent-pokemon {
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+
+        img {
+            width: 100%;
+            opacity: 50%;  
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 15px;
+        }
+    }
+
+    .arrow {
+        background-color: $background-color-secondary;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 25px;
+        margin: 0 10px;
+    }
+}
+
+.data-container {
+    position: relative;
+    top: 4rem;
+}
+
+.poke-type-container {
+    margin: 15px 0;
+
+    h3 {
+        margin-bottom: 15px;
+    }
+
+}
+
+.pokedex-container {
+    display: inline;
+}
+
+.poke-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.classification {
+    grid-area: classification;
+}
+
+.abilities {
+    grid-area: abilities;
+}
+
+.height {
+    grid-area: height;
+}
+
+.weight {
+    grid-area: weight;
+}
+
+.local {
+    grid-area: local;
+}
+
+.pokedex-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        'classification abilities local'
+        'height weight local';
 }

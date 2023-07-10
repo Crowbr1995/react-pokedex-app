@@ -1,0 +1,60 @@
+.Pagination {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 35px 0;
+}
+
+.page-btn {
+    background-color: $background-color-primary;
+    display:block;
+    float:left;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 25px;
+    margin: 7px;
+    cursor: pointer;
+
+    &.inactive {
+        color: $inactive-color;
+        pointer-events: none;
+    }
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.page {
+    display: flex;
+    align-items: center;
+
+    .page-number {
+        padding: 0 10px;
+        background-color: $background-color-secondary;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        margin: 4px;
+        padding: 2px 10px;
+        color: $text-color;
+        border: solid $text-color 2px;
+
+        &.current {
+            background-color: $color-primary;
+            pointer-events: none;
+        }
+
+        &.none {
+            display: none;
+        }
+
+        &:hover {
+            border-color: $color-primary;
+        }
+        
+    }
+}
+
+

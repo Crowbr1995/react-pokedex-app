@@ -2,18 +2,6 @@
     margin: 10px;
 }
 
-.current {
-    color: red;
-}
-
-.none {
-    display: none;
-}
-
-.inactive {
-    color: red;
-}
-
 .pokedex {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -34,17 +22,14 @@
     cursor: pointer;
     border-radius: 15px;
     
-    &:hover { @each $type, $color in $type-colors {
-        &.#{$type} {
-            box-shadow: 10px 10px $color;
-        }
+    &:hover { 
+        @each $type, $color in $type-colors {
+            &.#{$type} {
+                box-shadow: 10px 10px $color;
+            }
       }
     }
-    h3 {
-        background-color: $background-color-secondary;
-        color: $text-color;
-        font-size: 24px;
-    }
+    
     img {
         background-color: $background-color-secondary;
         width: 60%;

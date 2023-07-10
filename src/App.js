@@ -32,7 +32,7 @@ function App() {
         setNewUrl(`https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`)
         setPrev(response.data.previous)
         setNext(response.data.next)
-        console.log();
+        console.log(url);
         console.log();
       }
        catch (error) {
@@ -85,17 +85,17 @@ function App() {
     setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${pageNum * results}&limit=${results}`);
   }
 
-  const handlePageResults= (result) => {
+  const handlePageResults = (result) => {
+    setPage(0);
     setResults(result);
-    setPage(0)
-    setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=${result}`);
+    setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${0}&limit=${result}`);
   }
 
   return (
     <div className="App">
       <div className='diagonal-background'></div>
       {loading ? (
-        <div>Loading...</div>
+        <img className="pokeball" src='/assets/pokeball.svg' alt='ball' />
       ) : (
         <>
           <Search handleSearch={handleSearch} handlePageResults={handlePageResults} pokedex={pokedex} results={results} />
