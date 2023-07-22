@@ -9,11 +9,22 @@ export default function BreedingData({ species }) {
 
   return (
     <div>
-      <h2>Breeding Data</h2>
-      <h3>Egg Groups</h3>
-      {species.egg_groups && species.egg_groups.map(group => <p key={group.name}>{capitalizeLetter(group.name)}</p>)}
-      <h3>Egg Cycles</h3>
-      <p>{species.hatch_counter}</p>
+      <h2 className='title'>Breeding Data</h2>
+      <div className='breeding-data-container type-border'>
+      <div>
+        <h3>Egg Groups:</h3>   
+          {species.egg_groups && species.egg_groups.map((group, index) => (
+            <React.Fragment key={group.name}>
+              <p>{capitalizeLetter(group.name)}</p>
+              {index !== species.egg_groups.length - 1 && <span>,</span>}
+            </React.Fragment>
+          ))}
+      </div>
+        <div>
+          <h3>Egg Cycles:</h3>
+          <p>{species.hatch_counter}</p>
+        </div>
+      </div>
     </div>
   );
 }

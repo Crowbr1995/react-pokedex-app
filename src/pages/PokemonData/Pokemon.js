@@ -61,7 +61,7 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
               <>
                 <div className='adjacent-pokemon'>
                   <img src={prevPokemonImage} alt="Previous Pokemon" />
-                  <p className='entry-number'># {formatIdxNum(prevPokemon.id)}</p>
+                  <p className='entry-number'>#{formatIdxNum(prevPokemon.id)}</p>
                   <h3 className='entry-name'>{capitalizeLetter(prevPokemon.name)}</h3>
                 </div>
                 <div className='arrow'>{'<'}</div>
@@ -70,7 +70,7 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
           </div>
           <div className='main-container'>
             <h2 className='entry-name'>{capitalizeLetter(pokemon.name)}</h2>
-            <p className='entry-number'># {formatIdxNum(pokemon.id)}</p>
+            <p className='entry-number'>#{formatIdxNum(pokemon.id)}</p>
             <div className='main-img-container'>
               <img className='main-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
               <img className='main-img' src={pokemon.sprites.front_shiny} alt={pokemon.name} />
@@ -82,7 +82,7 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
               <div className='arrow'>{'>'}</div>
               <div className='adjacent-pokemon'>
                 <img src={nextPokemonImage} alt="Next Pokemon" />
-                <p className='entry-number'># {formatIdxNum(nextPokemon.id)}</p>
+                <p className='entry-number'>#{formatIdxNum(nextPokemon.id)}</p>
                 <h3 className='entry-name'>{capitalizeLetter(nextPokemon.name)}</h3>
               </div>
             </> 
@@ -95,7 +95,7 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
         <TrainingData pokemon={pokemon} species={species} />
         <StatData pokemon={pokemon} />
         <BreedingData species={species} />
-        <Evolution pokemonName={pokemon.name} species={species} setPokemonData={setPokemonData} />
+        <Evolution pokemon={pokemon} setPokemonData={setPokemonData} />
         <PokedexEntry species={species} />
         <MoveList pokemon={pokemon} />
       </div>

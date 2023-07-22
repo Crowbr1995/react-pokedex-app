@@ -11,6 +11,7 @@
         font-size: 47px;
         letter-spacing: 2px;
         margin-right: 10%;
+        cursor: pointer;
     }
 }
 
@@ -43,28 +44,4 @@
             background-color: antiquewhite;
         }
     }
-}
-
-.result-container {
-    padding-right: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 2px;
-
-    label {
-        padding-bottom: 5px;
-    }
-}
-
-.dropdown-container {
-    border-radius: 5px;
-    height: 25px;
-    width: 55px;
-    cursor: pointer;
-
-    .dropdown-default {
-        background-color: #8c8c8c;
-    }
-
 }

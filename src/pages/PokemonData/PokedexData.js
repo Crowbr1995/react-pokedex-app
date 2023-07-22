@@ -8,9 +8,9 @@ export default function PokedexData({ pokemon, species, pokeType }) {
   const secondType = pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
 
   return (
-    <div>
-        <h2>Pokedex Data</h2>
-          <div className='poke-type-container'>
+    <div className='PokedexData'>
+        <h2 className='title'>Pokedex Data</h2>
+          <div className='poke-type-container type-border'>
             <h3>Type</h3>
             <div className='poke-type'>{pokemon.types.map(types => (
                   <Type type={types.type.name} key={types.type.name} />
@@ -18,27 +18,27 @@ export default function PokedexData({ pokemon, species, pokeType }) {
             </div>
           </div>
         <div className='pokedex-container pokedex-grid'>
-          <div className='classification'>
+          <div className='classification type-border'>
             <h3>Classification</h3>
             <p>{species && species.genera.find((genus) => genus.language.name === 'en').genus}</p>
           </div>
-          <div className='abilities'>
+          <div className='abilities type-border'>
             <h3>Abilities</h3>
             {pokemon.abilities.map(ab => (!ab.is_hidden ? 
             <p key={ab.ability.name}>{capitalizeLetter(ab.ability.name)}</p> : 
             <p key={ab.ability.name}>{capitalizeLetter(ab.ability.name)}<span> (Hidden)</span></p>))}
           </div>
-          <div className='height'>
+          <div className='height type-border'>
             <h3>Height</h3>
             <p>{formatFeet(pokemon.height).feet}' {formatFeet(pokemon.height).inches}"</p>
             <p>{formatUnit(pokemon.height)}m</p>
           </div>
-          <div className='weight'>
+          <div className='weight type-border'>
             <h3>Weight</h3>
             <p>{formatPounds(pokemon.weight)}lbs</p>
             <p>{formatUnit(pokemon.weight)}kg</p>
           </div>
-          <div className='local'>
+          <div className='local type-border'>
               <h3>Local Number</h3>
               {species &&
                   species.pokedex_numbers &&

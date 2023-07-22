@@ -31,9 +31,7 @@ function App() {
         setLoading(false);
         setNewUrl(`https://pokeapi.co/api/v2/pokemon?offset=20&limit=20`)
         setPrev(response.data.previous)
-        setNext(response.data.next)
-        console.log(url);
-        console.log();
+        setNext(response.data.next)  
       }
        catch (error) {
         console.log('Error:', error.message);
@@ -63,6 +61,7 @@ function App() {
           const response = await axios.get(pokemon.species.url);
           const speciesData = response.data;
           setSpecies(speciesData);
+          console.log(species);
         }
       } catch (error) {
         console.log('Error: ', error.message);
@@ -88,6 +87,7 @@ function App() {
   const handlePageResults = (result) => {
     setPage(0);
     setResults(result);
+    setPokemon(null)
     setUrl(`https://pokeapi.co/api/v2/pokemon?offset=${0}&limit=${result}`);
   }
 
@@ -98,12 +98,12 @@ function App() {
         <img className="pokeball" src='/assets/pokeball.svg' alt='ball' />
       ) : (
         <>
-          <Search handleSearch={handleSearch} handlePageResults={handlePageResults} pokedex={pokedex} results={results} />
+          <Search handleSearch={handleSearch} handlePageResults={handlePageResults} />
           {pokemon ? (
             <PokemonData pokemon={pokemon} species={species} setPokemonData={setPokemonData} formatHome={formatHome} />
           ) : (
             <div>
-              <PokemonList pokedex={pokedex} setPokemonData={setPokemonData} page={page} handleNewPage={handleNewPage} />
+              <PokemonList pokedex={pokedex} setPokemonData={setPokemonData} page={page} handleNewPage={handleNewPage} handlePageResults={handlePageResults} results={results} />
             </div>
           )}
         </>

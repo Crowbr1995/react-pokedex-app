@@ -39,7 +39,14 @@ html {
   background-color: $background-color-secondary;
   color: $text-color;
   font-size: 30px;
-}  
+} 
+
+.title {
+  font-size: 35px;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
 
 .diagonal-background {
     width: 100%;

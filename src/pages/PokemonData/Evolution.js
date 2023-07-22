@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { capitalizeLetter } from '../../utils';
+import { capitalizeLetter, formatIdxNum } from '../../utils';
+
+import Type from '../../components/Type';
+
 
 export default function Evolution({ pokemonName, pokemon, setPokemonData }) {
   const [evolutionChain, setEvolutionChain] = useState([]);
@@ -8,7 +11,7 @@ export default function Evolution({ pokemonName, pokemon, setPokemonData }) {
   useEffect(() => {
     const fetchEvolutionChain = async () => {
       try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`);
         const data = await response.json();
 
         const evolutionUrl = data.evolution_chain.url;
@@ -76,30 +79,33 @@ export default function Evolution({ pokemonName, pokemon, setPokemonData }) {
       });
     }
   };
-
+ 
   return (
     <div>
-      <h2>Evolution Chain for {capitalizeLetter(pokemon)}</h2>
-      <ul>
+      <h2 className="title">Evolution Chain for {capitalizeLetter(pokemon.name)}</h2>
+      <div className="evolution-container">
         {evolutionChain.map((pokemonData, index) => (
-          <li key={index} onClick={() => (setPokemonData(pokemonData.name))}>
+          <div className="evolution-data" key={index} onClick={() => (setPokemonData(pokemonData.name))}>
             {pokemonData.evolutionMethod && (
-              <span>
+              <div className="evolution-method">
                 {" "}
-                - {pokemonData.evolutionMethod}
+                {pokemonData.evolutionMethod}
                 {pokemonData.evolutionLevel && (
                   <span> {pokemonData.evolutionLevel}</span>
                 )}
                 {pokemonData.evolutionItem && (
-                  <span> {capitalizeLetter(pokemonData.evolutionItem)}</span>
+                  <div> {capitalizeLetter(pokemonData.evolutionItem)}</div>
                 )}
-              </span>
+                <div className="evo-arrow"></div>
+              </div>
             )}
-            <img src={pokemonData.imageUrl} alt={pokemonData.name} />
-            <span>{capitalizeLetter(pokemonData.name)}</span>
-          </li>
+            <div className="evolution-pokemon"> 
+              <img src={pokemonData.imageUrl} alt={pokemonData.name} />
+              <span>{capitalizeLetter(pokemonData.name)}</span>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

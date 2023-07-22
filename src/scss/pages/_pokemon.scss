@@ -2,6 +2,8 @@
     z-index: 2;
     background: linear-gradient(rgb(26, 28, 26, 0) 0%, $background-color-secondary 1%, $background-color-secondary 98%, rgb(26, 28, 26, 0) 100%);
     color: $text-color;
+    display: flex;
+    flex-direction: column;
     width: 70%;
     margin: 30px auto;
     padding: 150px 0 250px;
@@ -13,6 +15,11 @@
             border-image: linear-gradient(rgb(46, 48, 51, 0) 0%, $color 3%, $color 97%, rgb(46, 48, 51, 0) 100%);
             border-image-slice: 1;
             $color-2: $color;
+            .type-border {
+                border: 2px $color solid;
+                border-radius: 10px;
+                background-color: $background-color-tertiary;
+            }
         }
       }
 }
@@ -20,8 +27,8 @@
 .back-btn {
 	overflow: hidden;
 	position: relative;
-    bottom: 30px;
-    left: 35%;
+    bottom: 45px;
+    left: 85%;
 	border: none;
 	padding: 0;
 	width: 1.9em; height: 2em;
@@ -81,7 +88,7 @@
         flex-direction: row;
 
         .main-img {
-            width: 140px;
+            width: 180px;
         }
     }
     
@@ -133,11 +140,35 @@
 
 .data-container {
     position: relative;
-    top: 4rem;
+    top: 13rem;
+}
+
+.PokedexData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    h3 {
+        margin: 10px 0;
+        font-size: 22px;
+    }
+}
+
+.pokedex-data-title {
+    margin-bottom: 30px;
+    font-size: 30px;
 }
 
 .poke-type-container {
     margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 40%;
 
     h3 {
         margin-bottom: 15px;
@@ -146,35 +177,68 @@
 }
 
 .pokedex-container {
-    display: inline;
+    display: flex;
+    align-items: center;
+    width: 90%;
+
+    div {
+        margin: 15px 10%;
+    }
 }
 
 .poke-type {
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    
+    justify-content: center;    
 }
 
 .classification {
     grid-area: classification;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
 }
 
 .abilities {
     grid-area: abilities;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
 }
 
 .height {
     grid-area: height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
 }
 
 .weight {
     grid-area: weight;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
 }
 
 .local {
     grid-area: local;
+    width: 80%;
+
+    div {
+        display: flex;
+
+        p {
+            margin-right: 3px;
+        }
+    }
 }
 
 .pokedex-grid {
@@ -184,3 +248,141 @@
         'classification abilities local'
         'height weight local';
 }
+
+.training-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+
+    div {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        height: 30%;
+        width: 80%;
+
+        h3 {
+            font-size: 22px;
+            margin-right: 15px;
+        }
+
+        p {
+            font-size: 19px;
+        }
+
+    }
+}
+
+.StatData {
+    width: 90%;
+    color: $text-color;
+    margin: 50px auto 0;
+
+    .stat-graph {
+        height: 400px;
+        padding: 10px;
+    }
+}
+
+.breeding-data-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    height: 120px;
+
+    div {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        height: 40%;
+        width: 80%;
+
+        h3 {
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        p {
+            font-size: 19px;
+            margin-left: 5px;
+        }
+
+    }
+}
+
+.evolution-data {
+    display: flex;
+    flex-direction: column;
+
+    .evolution-method {
+      font-size: 20px;
+      opacity: 80%;
+    }
+}
+
+.evolution-pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+        width: 17%;
+        margin-top: 40px;
+    }
+
+    span {
+        font-size: 25px;
+        margin-bottom: 70px
+    }
+}
+
+
+.evo-arrow {
+    display: block;
+    margin: 30px auto;
+    width: 25px;
+    height: 25px;
+    border-top: 3px solid $text-color;
+    border-left: 3px solid $text-color;
+    transform: rotate(-135deg);
+
+    &::after {
+        content: "";
+        display: block;
+        width: 2px;
+        height: 45px;
+        background-color: $text-color;
+        transform: rotate(-45deg) translate(15px, 4px);
+        left: 0;
+        top: 0;
+    }
+}
+
+.entry-container {
+    width: 90%;
+    margin: auto;
+}
+
+.entry {
+    display: flex;
+    margin: 20px;
+    align-items: center;
+
+    h3 {
+        margin-right: 15px;
+        clear: both;
+        display: inline-block;
+        text-align: start;
+    }
+
+    p {
+        font-size: 15px;
+        text-align: start;
+    }
+}
+

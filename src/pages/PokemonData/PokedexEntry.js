@@ -12,7 +12,8 @@ export default function PokedexEntry({ species }) {
 
   return (
     <div>
-      <h2>Pokedex Entry</h2>
+      <h2 className="title">Pokedex Entry</h2>
+      <div className="entry-container type-border">
       {species &&
         species.flavor_text_entries.map((entry, index) => {
           if (
@@ -24,8 +25,8 @@ export default function PokedexEntry({ species }) {
             if (cleanedDescription !== previousDescription) {
               previousDescription = cleanedDescription;
               return (
-                <div key={index}>
-                  <h3>{capitalizeLetter(entry.version.name)}</h3>
+                <div className="entry" key={index}>
+                  <h3>{capitalizeLetter(entry.version.name)}: </h3>
                   <p>{cleanedDescription}</p>
                 </div>
               );
@@ -33,6 +34,7 @@ export default function PokedexEntry({ species }) {
           }
           return null;
         })}
+        </div>
     </div>
   );
 }
