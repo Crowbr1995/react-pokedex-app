@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { capitalizeLetter } from '../../utils';
 
-export default function Move({ move, learnLevel }) {
+export default function Move({ move, learnLevel, level }) {
   const [moveData, setMoveData] = useState(null)
 
   const fetchMoveData = async () => {
@@ -21,9 +21,9 @@ export default function Move({ move, learnLevel }) {
 
   return (
     moveData && (
-      <div>
-        <p>{learnLevel}</p>
-        <p>---{capitalizeLetter(moveData.name)}</p>
+      <div className={`${level ? 'level-move' : 'move'} type-border`}>
+        {level ? (<p>{learnLevel}</p>) : null}
+        <p>{capitalizeLetter(moveData.name)}</p>
         <p>{capitalizeLetter(moveData.type.name)}</p>
         <p>{capitalizeLetter(moveData.damage_class.name)}</p>
         <p>{moveData.power ? moveData.power : "-"}</p>

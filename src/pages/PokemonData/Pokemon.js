@@ -56,7 +56,7 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
     <div className={`Pokemon ${pokeType}`}>
         <button className="back-btn" onClick={formatHome}>X</button>
         <div className='data-main'>
-          <div className='adjacent-container prev' onClick={() => navigatePokemon(prevPokemon.id)}>
+          <div className='adjacent-container left-animation prev' onClick={() => navigatePokemon(prevPokemon.id)}>
             {prevPokemonImage &&
               <>
                 <div className='adjacent-pokemon'>
@@ -73,10 +73,12 @@ export default function Pokemon({ pokemon, species, formatHome, setPokemonData }
             <p className='entry-number'>#{formatIdxNum(pokemon.id)}</p>
             <div className='main-img-container'>
               <img className='main-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
+              {pokemon.sprites.front_shiny ? (
               <img className='main-img' src={pokemon.sprites.front_shiny} alt={pokemon.name} />
+              ) : null}
             </div>
           </div>
-          <div className='adjacent-container next' onClick={() => navigatePokemon(nextPokemon.id)}>
+          <div className='adjacent-container right-animation next' onClick={() => navigatePokemon(nextPokemon.id)}>
             {nextPokemonImage && 
             <>
               <div className='arrow'>{'>'}</div>

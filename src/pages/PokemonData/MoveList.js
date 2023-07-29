@@ -30,12 +30,12 @@ export default function MoveList({ pokemon }) {
 
   return (
     <div>
-      <h2>Move List</h2>
+      <h2 className='title'>Move List</h2>
 
       {organizedMoves.levelUpMoves.length > 0 && (
-        <div>
-          <h3>Level Up Moves</h3>
-          <div>
+        <div className='moveset'>
+          <h3 className='move-title'>Level Up Moves</h3>
+          <div className='level-move-container type-border'>
             <h3>Lv.</h3>
             <h3>Move</h3>
             <h3>Type</h3>
@@ -44,15 +44,15 @@ export default function MoveList({ pokemon }) {
             <h3>Accuracy</h3>
           </div>
             {organizedMoves.levelUpMoves.map(moves => (
-              <Move key={moves.move.name} move={moves} learnLevel={moves.version_group_details[0].level_learned_at} />
+              <Move key={moves.move.name} move={moves} learnLevel={moves.version_group_details[0].level_learned_at} level={true} />
             ))}
         </div>
       )}
 
       {organizedMoves.machineMoves.length > 0 && (
-        <div>
-          <h3>Machine Moves</h3>
-          <div>
+        <div className='moveset'>
+          <h3 className='move-title'>Machine Moves</h3>
+          <div className='move-container type-border'>
             <h3>Move</h3>
             <h3>Type</h3>
             <h3>Category</h3>
@@ -68,9 +68,9 @@ export default function MoveList({ pokemon }) {
       )}
 
       {organizedMoves.tutorMoves.length > 0 && (
-        <div>
-          <h3>Tutor Moves</h3>
-          <div>
+        <div className='moveset'>
+          <h3 className='move-title'>Tutor Moves</h3>
+          <div className='move-container type-border'>
             <h3>Move</h3>
             <h3>Type</h3>
             <h3>Category</h3>
@@ -86,9 +86,9 @@ export default function MoveList({ pokemon }) {
       )}
 
       {organizedMoves.eggMoves.length > 0 && (
-        <div>
-          <h3>Egg Moves</h3>
-          <div>
+        <div className='moveset'>
+          <h3 className='move-title'>Egg Moves</h3>
+          <div className='move-container type-border'>
             <h3>Move</h3>
             <h3>Type</h3>
             <h3>Category</h3>
