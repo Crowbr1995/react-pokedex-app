@@ -47,7 +47,7 @@ export default function StatData({ pokemon }) {
         ticks: {
           color: 'white', 
           font: {
-            size: 16, 
+            size: 11, 
           },
         },
       },

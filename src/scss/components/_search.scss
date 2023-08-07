@@ -45,3 +45,36 @@
         }
     }
 }
+
+@media screen and (max-width: 780px) {
+    .Search {
+        flex-direction: column;
+        padding: 0;
+
+        h2 {
+            font-size: 27px;
+            margin: 5px 0 0;
+        }
+    }
+
+    .search-form {
+        display: flex;
+        align-self: center;
+        margin: auto;
+        
+        input {
+            width: 100px;
+            height: 20px;
+            font-size: 12px;
+        }
+
+        button {
+            width: 30px;
+            height: 20px;
+
+            img {
+                width: 10px;
+            }
+        }
+    }
+}

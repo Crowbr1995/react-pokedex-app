@@ -15,8 +15,10 @@ export default function Pokedex({ pokedex, setPokemonData, page, handleNewPage, 
         if (p.id < 10000) {
           return (
             <div className={`pokedex-item ${p.types[0].type.name}`} key={p.name} onClick={() => setPokemonData(p.name)}>
-              <p className='entry-number'>#{formatIdxNum(p.id)}</p>
-              <h3 className='entry-name'>{capitalizeLetter(p.name)}</h3>
+              <div className='pokedex-entry'>
+                <p className='entry-number'>#{formatIdxNum(p.id)}</p>
+                <h3 className='entry-name'>{capitalizeLetter(p.name)}</h3>
+              </div>
               <img src={p.sprites.front_default} alt={p.name} />
               <div className='type-container'>
                 {p.types.map(types => (

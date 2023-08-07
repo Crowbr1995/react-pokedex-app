@@ -54,11 +54,11 @@ export default function Pagination({ pokedex, page, handleNewPage, handlePageRes
                 <button className={`page-btn ${page < 10 ? 'inactive' : null}`} onClick={() => handleNewPage(page - 10)}>{'<<'}</button>
                 <button className={`page-btn ${page === 0 ? 'inactive' : null}`} onClick={() => handleNewPage(page - 1)}>{'<'}</button>
                 <div className='page'>
-                    {page > 0 && totalPages >= 10 && <div className='page-number' onClick={() => handleNewPage(0)}>1...</div>}
+                    {page > 0 && totalPages >= 10 && <div className='page-number' onClick={() => handleNewPage(0)}><p>1...</p></div>}
                     {pageIndx.map((num) => (
-                    <div className={`page-number ${handlePageNum(num)}`} onClick={() => handleNewPage(num)} key={num}>{num + 1}</div>
+                    <div className={`page-number ${handlePageNum(num)}`} onClick={() => handleNewPage(num)} key={num}><p>{num + 1}</p></div>
                     ))}
-                    {page < totalPages - 9 && <div className='page-number' onClick={() => handleNewPage(totalPages)}>...{totalPages + 1}</div>}
+                    {page < totalPages - 9 && <div className='page-number' onClick={() => handleNewPage(totalPages)}><p>...{totalPages + 1}</p></div>}
                 </div>
                 <button className={`page-btn ${page === totalPages ? 'inactive' : null}`} onClick={() => handleNewPage(page + 1)}>{'>'}</button>
                 <button className={`page-btn ${page > totalPages - 10 ? 'inactive' : null}`} onClick={() => handleNewPage(page + 10)}>{'>>'}</button>

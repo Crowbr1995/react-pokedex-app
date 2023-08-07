@@ -21,14 +21,16 @@
     border: solid white 2px;
     cursor: pointer;
     border-radius: 15px;
-    
-    &:hover { 
-        @each $type, $color in $type-colors {
-            &.#{$type} {
-                box-shadow: 10px 10px $color;
-                transition: .5s;
-            }
-      }
+
+    @media screen and (min-width: 781px){
+        &:hover { 
+            @each $type, $color in $type-colors {
+                &.#{$type} {
+                    box-shadow: 10px 10px $color;
+                    transition: .5s;
+                }
+          }
+        }
     }
     
     img {
@@ -36,9 +38,66 @@
         width: 60%;
         
     }
+
+    .pokedex-entry {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .type-container {
+        display: flex;
+        background-color: $background-color-secondary;
+    }
 }
 
-.type-container {
-    display: flex;
-    background-color: $background-color-secondary;
-}
+
+
+@media screen and (max-width: 780px) {
+    .pokedex {
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .pokedex-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        align-items: center;
+        width: 90%;
+        height: 120px;
+        border-radius: 0;
+        border: none;
+        margin: 5px;
+        padding-left: 25px;
+        background: linear-gradient(to right, rgb(26, 28, 26, 0) 0%, $background-color-secondary 3%, $background-color-secondary 97%, rgb(26, 28, 26, 0) 100%);
+        border-image: linear-gradient(to right, rgb(46, 48, 51, 0) 0%, $text-color 10%, $text-color 90%, rgb(46, 48, 51, 0) 100%) 0 / 1px;
+        border-image-slice: 1;
+  
+      img {
+        width: 90px;
+        
+      }
+  
+      .type-container {
+        flex-direction: column;
+        justify-self: flex-start;
+        margin-left: 10px;
+
+        div {
+            display: flex;
+            margin: 5px auto;
+            width: 30px;
+            height: 15px;
+            font-size: 9px;
+            align-items: center;
+            justify-content: center;
+        }
+      }
+
+      .entry-name {
+        font-size: 20px;
+      }
+
+    }
+  }
+  
